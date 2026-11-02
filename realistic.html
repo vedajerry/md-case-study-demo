@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Showing work buyers understand — mockup direction deck · Maitri Designs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#121A16; --soft:#44524B; --muted:#71807A;
+  --teal:#0B7373; --teal-deep:#07575A; --teal-wash:#E9F4F3;
+  --paper:#FAFAF8; --card:#fff; --line:#E4E9E6;
+  --warn:#B4552D; --warn-wash:#F7EDE6;
+  --ui-bg:#F3F6F4; --ui-line:#D9E0DC; --ui-sub:#8B968F;
+  --head:'Archivo',system-ui,sans-serif; --body:'Inter',system-ui,sans-serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);background:var(--paper);color:var(--ink);font-size:15px;line-height:1.55}
+.wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+.mono{font-family:var(--mono)}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal)}
+h1{font-family:var(--head);font-weight:800;font-size:clamp(30px,4.4vw,50px);letter-spacing:-.02em;line-height:1.05;margin:.3em 0 .2em}
+h2{font-family:var(--head);font-weight:700;font-size:clamp(21px,2.5vw,29px);letter-spacing:-.01em;margin:0 0 6px}
+h3{font-family:var(--head);font-weight:700;font-size:16px;margin:0 0 4px}
+p{max-width:70ch}
+.lede{font-size:16.5px;color:var(--soft)}
+section{padding:54px 0;border-bottom:1px solid var(--line)}
+.topbar{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);background:#fff}
+.topbar .wrap{padding-top:14px;padding-bottom:14px}
+.topbar .mono{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.toc{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line)}
+.toc .wrap{display:flex;gap:18px;overflow-x:auto;padding:10px 28px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.toc a{color:var(--muted);text-decoration:none}.toc a:hover{color:var(--teal)}
+.note{font-size:13px;color:var(--muted)}
+.callout{background:var(--teal-wash);border-left:3px solid var(--teal);padding:13px 17px;border-radius:0 6px 6px 0;max-width:74ch}
+.chip{display:inline-block;font-family:var(--mono);font-size:10.5px;padding:3px 9px;border:1px solid #CBD5D0;border-radius:3px;background:#fff;color:var(--soft)}
+.chip.solid{background:var(--teal);color:#fff;border-color:var(--teal)}
+.chip.p1{background:var(--warn);color:#fff;border-color:var(--warn)}
+.chip.p2{background:#fff;color:var(--warn);border-color:var(--warn)}
+.chip.p3{background:#fff;color:var(--soft)}
+.quote{border-left:3px solid var(--line);padding:2px 14px;color:var(--soft);font-size:14px}
+footer{padding:40px 0 60px;color:var(--muted);font-size:13px}
+.cols{display:grid;grid-template-columns:1.5fr 1fr;gap:30px;align-items:start}
+@media(max-width:860px){.cols{grid-template-columns:1fr}}
+ul.t{margin:8px 0;padding-left:18px;font-size:14px;color:var(--soft)}
+ul.t li{margin:6px 0}
+
+/* ======== device shells ======== */
+.plane{display:grid;grid-template-columns:1.5fr 1fr .55fr;gap:22px;align-items:end;margin:24px 0 8px}
+@media(max-width:880px){.plane{grid-template-columns:1fr}}
+.plane>div>span{display:block;font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}
+.laptop{background:#20261F;border-radius:12px;padding:1.9% 1.9% 3.6%;box-shadow:0 10px 26px rgba(18,26,22,.14)}
+.laptop .base{height:7px;background:linear-gradient(#3A443C,#222A25);border-radius:0 0 9px 9px;margin:0 -4.2%;border:1px solid #141912;border-top:0}
+.tablet{background:#20261F;border-radius:14px;padding:2.6%;box-shadow:0 10px 26px rgba(18,26,22,.14)}
+.phone{width:66%;margin:0 auto;background:#20261F;border-radius:16px;padding:2.8% 2.4%;box-shadow:0 10px 26px rgba(18,26,22,.14)}
+.phone .notch{height:5px;width:24%;margin:0 auto;background:#0C100D;border-radius:0 0 6px 6px;position:relative;z-index:2;top:-1px}
+.scr{background:#fff;border-radius:4px;overflow:hidden;position:relative}
+.tablet .scr{border-radius:6px}.phone .scr{border-radius:8px}
+
+/* ======== inside the screens (real, not wireframe) ======== */
+.ui{background:var(--ui-bg);font-size:10px;color:var(--ink);position:relative;padding:0}
+.ui .huge{font-size:0}
+.topice{display:flex;align-items:center;gap:6px;background:#fff;border-bottom:1px solid var(--ui-line);padding:5px 9px}
+.topice .dot{width:11px;height:11px;border-radius:3px;background:var(--teal)}
+.topice .srch{flex:1;background:#F1F4F2;border:1px solid var(--ui-line);border-radius:9px;font-size:7.5px;color:var(--ui-sub);padding:2.5px 8px}
+.topice .av{width:14px;height:14px;border-radius:50%;background:#DCE5E1;color:var(--soft);font-size:7px;display:flex;align-items:center;justify-content:center;font-weight:600}
+.side{position:absolute;left:0;top:0;bottom:0;width:22px;background:#fff;border-right:1px solid var(--ui-line);display:flex;flex-direction:column;align-items:center;gap:6px;padding-top:9px}
+.side i{width:8px;height:8px;border-radius:2px;background:#E3E9E5}
+.side i.on{background:var(--teal)}
+.body{padding:9px 10px 12px 30px}
+.krow{display:flex;gap:7px}
+.kpi{flex:1;background:#fff;border:1px solid var(--ui-line);border-radius:5px;padding:7px 8px}
+.kpi .lbl{font-size:6.5px;color:var(--ui-sub);text-transform:uppercase;letter-spacing:.09em;font-family:var(--mono)}
+.kpi .val{font-family:var(--head);font-weight:700;font-size:15px;letter-spacing:-.01em;margin-top:2px}
+.kpi .dlt{font-size:7px;margin-top:1px}
+.kpi .up{color:#137A4E}.kpi .dn{color:var(--warn)}
+.cardrow{display:flex;gap:8px;margin-top:9px}
+.pane{flex:1.35;background:#fff;border:1px solid var(--ui-line);border-radius:5px;padding:8px 9px}
+.pane .ph{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.pane .ph b{font-size:9.5px}.pane .ph span{font-size:6.5px;color:var(--ui-sub);font-family:var(--mono)}
+.bars{display:flex;gap:4px;align-items:flex-end;height:52px}
+.bars i{flex:1;background:#D8E3DF;border-radius:2px 2px 0 0;background:linear-gradient(180deg,#CBD9D3,#DFE8E4)}
+.bars i.hi{background:linear-gradient(180deg,var(--teal),#0E8A84)}
+.bars .lbls{display:flex;gap:4px;font-size:5.5px;color:var(--ui-sub);font-family:var(--mono)}
+.bars .lbls span{flex:1;text-align:center}
+.tbl{flex:1;background:#fff;border:1px solid var(--ui-line);border-radius:5px;padding:7px 9px;overflow:hidden}
+.tbl table{width:100%;border-collapse:collapse;font-size:7.5px}
+.tbl th{font-family:var(--mono);font-size:6px;color:var(--ui-sub);text-transform:uppercase;letter-spacing:.08em;text-align:left;padding:0 0 4px;border-bottom:1px solid var(--ui-line)}
+.tbl td{padding:3.5px 4px 3.5px 0;border-bottom:1px solid #EEE;white-space:nowrap}
+.tbl tr:last-child td{border-bottom:0}
+.st{font-family:var(--mono);font-size:6px;padding:1px 5px;border-radius:3px}
+.st.a{background:#E4F2EA;color:#137A4E}.st.b{background:#FDF2DD;color:#8A6416}.st.c{background:#ECEFF1;color:#5D6B66}
+.st.d{background:#FBE7DE;color:var(--warn)}.st.e{background:#E1EEF2;color:#2A6C80}.st.f{background:#FBE7DE;color:#B4552D}
+.cta{display:inline-block;background:var(--teal);color:#fff;font-size:7.5px;font-weight:600;padding:4px 9px;border-radius:4px}
+
+/* realistic "before" messy bits */
+.messy .tabs{display:flex;gap:3px;overflow:hidden;margin-bottom:7px}
+.messy .tabs b{font-family:var(--mono);font-size:5.5px;font-weight:400;border:1px solid var(--ui-line);background:#fff;padding:2px 4px;color:#66756E;white-space:nowrap}
+.messy .tabs b.sel{background:#B7C6C0;color:#fff;border-color:#AAB9B3}
+.messy .kpi b9{font-size:10px}
+.badchip{background:#FCEAE5;color:#C24E1E}
+.mixed i{background:#C9D9DB}
+.pin{position:absolute;width:14px;height:14px;border-radius:50%;background:var(--teal);color:#fff;font-family:var(--mono);font-size:8px;display:flex;align-items:center;justify-content:center;z-index:3;box-shadow:0 0 0 2px rgba(255,255,255,.85)}
+.pin.bad{background:var(--warn)}
+.dtag{position:absolute;top:6px;right:6px;background:var(--teal);color:#fff;font-family:var(--mono);font-size:7.5px;padding:2.5px 7px;border-radius:3px;z-index:3}
+.dtag.dark{background:#0B3638}
+.strip{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.strip span{font-family:var(--mono);font-size:10px;border:1px solid #CBD5D0;background:#fff;border-radius:3px;padding:3px 8px}
+.strip span b{color:var(--teal);font-weight:500}
+.strip.dotline span{border-style:dashed;color:var(--soft)}
+
+/* annotated cards next to hero */
+.why{border:1px solid var(--teal);border-left:3px solid var(--teal);background:#fff;border-radius:4px;padding:9px 11px;font-size:12.5px;line-height:1.45}
+.why b.t{font-family:var(--mono);font-size:9.5px;color:var(--teal);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:3px}
+.why + .why{margin-top:9px}
+
+/* phone screens (health story) */
+.hm{padding:0;font-size:10px}
+.hm .hd{padding:8px 9px 6px;text-align:center;border-bottom:1px solid var(--ui-line)}
+.hm .hd .h{font-family:var(--head);font-weight:700;font-size:11px}
+.hm .hd .s{font-size:7px;color:var(--ui-sub);font-family:var(--mono)}
+.hm .bd{padding:9px}
+.bigval{font-family:var(--head);font-weight:700;font-size:22px;letter-spacing:-.02em}
+.bigval small{font-size:9px;color:var(--ui-sub);font-weight:500;font-family:var(--body)}
+.leadrow{display:flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--ui-line);border-radius:5px;padding:7px 9px;margin-top:8px}
+.leadrow .ic{width:16px;height:16px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:8px}
+.leadrow b{font-size:8.5px}
+.leadrow small{display:block;font-size:6.5px;color:var(--ui-sub)}
+.leadrow .rv{margin-left:auto;font-family:var(--head);font-weight:700;font-size:11px}
+.rep{background:#fff;border:1px solid var(--ui-line);border-radius:6px;padding:10px 9px;margin-top:9px}
+.rep .rk{display:flex;justify-content:space-between;align-items:baseline}
+.rep .rk b{font-size:9px}.rep .rk span{font-family:var(--mono);font-size:6.5px;color:var(--teal)}
+.barw{display:flex;gap:3px;align-items:flex-end;height:46px;margin-top:8px}
+.barw i{flex:1;border-radius:2px 2px 0 0;background:linear-gradient(180deg,#BFE0DC,#E2EEE9)}
+.barw i.hi{background:linear-gradient(180deg,var(--teal),#12908A)}
+.barw .lb{display:flex;gap:3px;font-size:5.8px;color:var(--ui-sub);font-family:var(--mono);margin-top:3px}
+.barw .lb span{flex:1;text-align:center}
+.goto{display:block;text-align:center;background:var(--teal);color:#fff;font-size:8px;font-weight:600;border-radius:5px;padding:5px;margin-top:10px}
+
+/* mini flow-ribbon connecting line */
+.ribbon{position:absolute;left:8px;right:8px;top:52%;height:2px;background:linear-gradient(90deg,var(--teal),var(--teal));opacity:.35;z-index:0}
+.node{position:absolute;top:calc(52% - 6px);width:14px;height:14px;border-radius:50%;background:var(--teal);border:2px solid #fff;color:#fff;font-family:var(--mono);font-size:7.5px;display:flex;align-items:center;justify-content:center;z-index:4}
+
+/* = final blueprint: realistic page, desktop = */
+.bp{background:#fff;border:1px solid #D7DEDA;border-radius:10px;box-shadow:0 18px 40px rgba(18,26,22,.08);overflow:hidden;font-size:11.5px}
+.bp .chrome{display:flex;align-items:center;gap:6px;padding:7px 11px;border-bottom:1px solid var(--ui-line);background:#F7F9F8}
+.bp .chrome i{width:8px;height:8px;border-radius:50%;background:#D9DEDC}
+.bp .crumb{font-family:var(--mono);font-size:8px;color:var(--ui-sub);margin-left:8px}
+.bp .grid{display:grid;grid-template-columns:1fr 170px}
+.bp .main{padding:16px 18px 18px;border-right:1px dashed #E4E9E6}
+.bp .aside{padding:16px 14px;font-family:var(--mono);font-size:9px}
+.bp .aside a{display:block;color:var(--muted);text-decoration:none;padding:7px 0;border-bottom:1px solid var(--ui-line)}
+.bp .aside a.on{color:var(--teal)}
+.bp h4{font-family:var(--head);font-size:20px;margin:5px 0 8px;letter-spacing:-.01em}
+.bp .sec{padding-top:13px;margin-top:13px;border-top:1px dashed #E4E9E6}
+.bp .sec .k{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.bp .sec .k.dim{color:var(--muted)}
+.bp .sec p{font-size:11px;color:var(--soft);margin:6px 0 0}
+.bp .ba{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}
+.bp .ba img{width:100%;border-radius:5px;border:1px solid var(--ui-line);background:linear-gradient(135deg,#E9EFEA,#F6F8F5);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:8px;color:var(--muted)}
+
+/* comparative gallery at top */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}
+@media(max-width:820px){.gallery{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="topbar"><div class="wrap">
+  <span class="mono">Maitri Designs · direction deck</span>
+  <span class="mono">Nov 2026 · for review</span>
+</div></header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#go" >01 The direction</a>
+  <a href="#why">02 What today's gallery costs us</a>
+  <a href="#d1">03 Move 1 · The comparison</a>
+  <a href="#d2">04 Move 2 · The story</a>
+  <a href="#d3">05 Move 3 · The hero shot</a>
+  <a href="#page">06 The case-study page</a>
+  <a href="#go_next">07 The ask</a>
+</div></nav>
+
+<main>
+
+<!-- ================= 01 ================= -->
+<section id="go">
+  <div class="wrap">
+    <span class="kicker">01 · The direction, in one line</span>
+    <h1>Buyers don't hire screens. They hire what changed.</h1>
+    <p class="lede">Three moves replace the wall of mockups — and each one is built to make a cold buyer decide for us. Fewer screens, shown bigger, with the outcome written on them.</p>
+
+    <div class="cols" style="margin-top:26px">
+      <div>
+        <ul class="t">
+          <li><strong>1 — One big screen at a time.</strong> Every screen arrives zoomed-in and readable, because in today's frames the buyer squints at the only part that matters. Each screen carries a one-line "what changed" tag — the reason for the screen lives <em>on</em> the screen.</li>
+          <li><strong>2 — One user story at a time.</strong> Three flows, the ones the client's user actually lives ("book a delivery", "get your weekly report"), shown start to finish. Each ends at an outcome the buyer recognises. Journeys sell; screenshots don't.</li>
+          <li><strong>3 — Before / after.</strong> The buyer's own "before" opens the story and our "after" closes it — problems numbered, fixes numbered. Any market, any industry, zero jargon required.</li>
+          <li><strong>Dropped:</strong> the next/previous carousel — buyers stop exploring after two clicks and everything after stays unseen. <strong>Added:</strong> one result line under every section, like <span class="mono">3 tools → 1 · 8 taps → 3</span> — the five words that close the "so what?"</li>
+        </ul>
+      </div>
+      <div>
+        <div class="callout">
+          <p><strong>The new bar for a screen:</strong> can a buyer tell our work apart from a template in 5 seconds? If not, it goes back — because the buyer filed us under "template" and left.</p>
+        </div>
+        <h3 style="margin-top:20px">Why you can bet on these three</h3>
+        <ul class="t">
+          <li><strong>They open with the buyer's world, not ours.</strong> The comparison starts on the client's current mess. The gallery stops leading with our achievement and starts leading with their problem — that's what earns the next 30 seconds.</li>
+          <li><strong>They argue in numbers, not adjectives.</strong> <span class="mono">8 taps → 3</span> ends debate; "seamless" starts it. Every claim closes the "so what?" in five words or fewer.</li>
+          <li><strong>They sell between meetings.</strong> One comparison, one story, one big screen — a buyer with 90 seconds and a phone gets the whole argument without hunting or clicking.</li>
+          <li><strong>They travel without a translation note.</strong> No process words on the surface — "your user gets the report on Sunday" reads true in every market. The deeper craft layer (tagged decisions, the ledger) stays one click away for evaluators, and never becomes the front door.</li>
+        </ul>
+        <p class="note" style="margin-top:12px">Reviewed with the design team before this deck: Arjun (UX + visual), Anuj (screen density), Meera (buyer read), Priya (build cost on the current stack).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 ================= -->
+<section id="why">
+  <div class="wrap">
+    <span class="kicker">02 · Today's gallery, real cost</span>
+    <h2>What today's gallery costs us</h2>
+    <p class="lede">Three mockups, three different clients. Same screen, same frame. Every one of these is a moment where a buyer can only file us under "template" — and inside the frame, half the pixels are furniture.</p>
+
+    <div class="gallery">
+      <div>
+        <div class="laptop" style="padding:6% 6% 9%"><div class="scr"><div class="ui">
+          <div class="topice"><span class="dot"></span><span style="font-size:8px;font-weight:600">Advisory overview</span><span class="srch">Search…</span><span class="av">MJ</span></div>
+          <div class="side"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+          <div class="body">
+            <div class="krow"><div class="kpi"><div class="lbl">Portfolio</div><div class="val">₹48.2 Cr</div></div><div class="kpi"><div class="lbl">Risk flag</div><div class="val">2</div></div><div class="kpi"><div class="lbl">Actions due</div><div class="val">14</div></div></div>
+            <div class="cardrow"><div class="pane"><div class="ph"><b>Week AUM</b><span>last 5 days</span></div><div class="bars"><i style="height:36%"></i><i style="height:52%"></i><i style="height:78%"></i><i style="height:44%"></i><i style="height:63%"></i></div><div class="bars lbls"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span></div></div>
+            <div class="tbl"><table><tr><th>Client</th><th>Status</th></tr><tr><td>R. Sharma</td><td><span class="st b">Docs pending</span></td></tr><tr><td>K. Menon</td><td><span class="st a">Reviewed</span></td></tr><tr><td>A. Fernandes</td><td><span class="st c">Completed</span></td></tr></table></div></div>
+          </div>
+        </div></div><div class="base"></div></div>
+        <span class="chip" style="margin-top:8px">Meridian · Advisor cockpit</span>
+      </div>
+      <div>
+        <div class="laptop" style="padding:6% 6% 9%"><div class="scr"><div class="ui">
+          <div class="topice"><span class="dot"></span><span style="font-size:8px;font-weight:600">Dispatch console</span><span class="srch">Search…</span><span class="av">PR</span></div>
+          <div class="side"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+          <div class="body">
+            <div class="krow"><div class="kpi"><div class="lbl">Deliveries today</div><div class="val">4,012</div></div><div class="kpi"><div class="lbl">On-route</div><div class="val">2,889</div></div><div class="kpi"><div class="lbl">Executions</div><div class="val">71</div></div></div>
+            <div class="cardrow"><div class="pane"><div class="ph"><b>Timeline</b><span>last 5 days</span></div><div class="bars"><i style="height:36%"></i><i style="height:52%"></i><i style="height:78%"></i><i style="height:44%"></i><i style="height:63%"></i></div><div class="bars lbls"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span></div></div>
+            <div class="tbl"><table><tr><th>Route</th><th>Status</th></tr><tr><td>#A-104</td><td><span class="st b">Docs pending</span></td></tr><tr><td>#A-221</td><td><span class="st a">Reviewed</span></td></tr><tr><td>#A-312</td><td><span class="st c">Completed</span></td></tr></table></div></div>
+          </div>
+        </div></div><div class="base"></div></div>
+        <span class="chip" style="margin-top:8px">Nimbus · Logistics console</span>
+      </div>
+      <div>
+        <div class="laptop" style="padding:6% 6% 9%"><div class="scr"><div class="ui">
+          <div class="topice"><span class="dot"></span><span style="font-size:8px;font-weight:600">Terminal ops</span><span class="srch">Search…</span><span class="av">VS</span></div>
+          <div class="side"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+          <div class="body">
+            <div class="krow"><div class="kpi"><div class="lbl">Vessels in</div><div class="val">6</div></div><div class="kpi"><div class="lbl">Containers</div><div class="val">3,207</div></div><div class="kpi"><div class="lbl">Alerts</div><div class="val">14</div></div></div>
+            <div class="cardrow"><div class="pane"><div class="ph"><b>Terminal</b><span>last 5 days</span></div><div class="bars"><i style="height:36%"></i><i style="height:52%"></i><i style="height:78%"></i><i style="height:44%"></i><i style="height:63%"></i></div><div class="bars lbls"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span></div></div>
+            <div class="tbl"><table><tr><th>Berth</th><th>Status</th></tr><tr><td>B2</td><td><span class="st b">Docs pending</span></td></tr><tr><td>B5</td><td><span class="st a">Reviewed</span></td></tr><tr><td>B7</td><td><span class="st c">Completed</span></td></tr></table></div></div>
+          </div>
+        </div></div><div class="base"></div></div>
+        <span class="chip" style="margin-top:8px">Portside · Ops dashboard</span>
+      </div>
+    </div>
+
+    <div class="cols" style="margin-top:22px">
+      <div>
+        <h3>Three reasons the client can't see us in this</h3>
+        <ul class="t">
+          <li><strong>Half of every mockup is furniture.</strong> Classic laptop mockups spend ~45% of their footprint on bezel + desk + shadow. The screen, the only thing that matters, is the minority.</li>
+          <li><strong>Same screen, different words.</strong> Product dashboards genuinely share one visual grammar — 3 KPIs, one chart, one table. Side by side, five clients become one picture.</li>
+          <li><strong>Nothing on the screen says "we decided this."</strong> What makes our work different is the reasoning; a plain screenshot carries none.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>What the client is silently asking</h3>
+        <ul class="t">
+          <li>"What here only happened because <strong>you</strong> worked on it?"</li>
+          <li>"Where would I get the same thing from <strong>a Figma template</strong>?"</li>
+          <li>"If I hire you, <strong>what exactly am I buying?</strong>"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 : DIRECTION 1 ================= -->
+<section id="d1">
+  <div class="wrap">
+    <span class="kicker">03 · Move 1 — the comparison</span>
+    <h2>Their before. Our after.</h2>
+    <p class="lede">The gallery's job is to open an argument, not display décor. Problems numbered on the old screen, fixes numbered on the new — the buyer recognises their own world on the left, watches it close on the right, and understands the hire without ever meeting the word "UX".</p>
+
+    <div class="plane">
+      <div>
+        <span>Laptop — the unit</span>
+        <div class="laptop"><div class="scr"><div class="ui messy" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ui-line)">
+          <!-- BEFORE -->
+          <div class="ui" style="position:relative">
+            <div class="topice"><span class="dot" style="background:#B9C4BE"></span><span style="font-size:7px;color:#66756E">Order settlement</span></div>
+            <div class="body" style="padding:7px 9px 9px 9px">
+              <div class="tabs"><b class="sel">Overview</b><b>Pending</b><b>Completed</b><b>Refunded</b><b>Reports</b><b>Settings</b><b>Help</b><b>Admin</b></div>
+              <div class="krow" style="gap:5px">
+                <div class="kpi" style="padding:4px 6px"><div class="lbl">Orders</div><div class="val" style="font-size:11px">7,204</div></div>
+                <div class="kpi" style="padding:4px 6px"><div class="lbl">Pending</div><div class="val" style="font-size:11px;color:var(--warn)">1,388</div></div>
+                <div class="kpi" style="padding:4px 6px;border-radius:0;border:0;border-bottom:2px solid var(--ui-line)"><div class="lbl">Refunded</div><div class="val" style="font-size:11px">312</div></div>
+                <div class="kpi" style="padding:4px 6px"><div class="lbl">Cancelled</div><div class="val" style="font-size:11px">87</div></div>
+              </div>
+              <div class="cardrow" style="margin-top:6px;gap:5px">
+                <div class="pane mixed" style="padding:6px 7px"><div class="ph"><b style="font-size:8px">Activity by order</b></div><div class="bars" style="height:34px"><i style="height:44%"></i><i style="height:66%"></i><i style="height:38%"></i><i class="hi" style="height:82%"></i><i style="height:49%"></i><i style="height:70%"></i></div></div>
+                <div class="tbl" style="padding:6px 7px"><table style="font-size:6.5px">
+                  <tr><th>Market txn detail</th><th colspan="2">Taxes</th></tr>
+                  <tr><td style="border-bottom:1px solid #EEE">Order A-104</td><td>− 101.7</td><td>− 12.2</td></tr>
+                  <tr><td>Order A-105</td><td>− 84.0</td><td>− 9.6</td></tr>
+                  <tr><td>Order A-106</td><td class="badchip">− 140.8</td><td class="badchip">− 21.0</td></tr>
+                  <tr><td>Order A-107</td><td>− 61.4</td><td>− 7.1</td></tr>
+                  <tr><td>Order A-108</td><td>− 92.3</td><td>− 14.7</td></tr>
+                  <tr><td>Order A-109</td><td>− 73.6</td><td>− 11.2</td></tr>
+                </table></div>
+              </div>
+              <div style="display:flex;gap:5px;margin-top:6px;align-items:center"><span class="cta" style="background:#9AA8A1">Download CSV ↓</span><span class="st f">3 invoices missing</span><span class="st c">last sync 14:22</span></div>
+              <span class="pin bad" style="left:42%;top:33%">1</span><span class="pin bad" style="left:78%;top:63%">2</span><span class="pin bad" style="left:60%;top:88%">3</span>
+            </div>
+            <span class="chip p1" style="position:absolute;bottom:5px;left:7px;font-size:6.5px;padding:2px 6px">BEFORE · 3 problems found</span>
+          </div>
+          <!-- AFTER -->
+          <div class="ui" style="position:relative;background:#fff">
+            <div class="topice"><span class="dot"></span><span style="font-size:7px">Orders</span></div>
+            <div class="body" style="padding:8px 9px 9px 9px">
+              <div class="krow" style="gap:5px">
+                <div class="kpi" style="padding:5px 7px"><div class="lbl">This week</div><div class="val" style="font-size:13px">7,204</div><div class="dlt up">+6.2% vs last</div></div>
+                <div class="kpi" style="padding:5px 7px"><div class="lbl">Awaiting you</div><div class="val" style="font-size:13px">4</div><div class="dlt dn">from 1,388 queued</div></div>
+              </div>
+              <div class="cardrow" style="margin-top:7px;gap:6px">
+                <div class="pane" style="padding:7px 8px"><div class="ph"><b style="font-size:8px">Status</b><span>tap to filter</span></div>
+                  <div style="display:flex;gap:4px;margin-top:2px"><span class="st a">Settled</span><span class="st b">Docs pending</span><span class="st c">Refunded</span></div>
+                  <div class="bars" style="height:38px;margin-top:6px"><i style="height:38%"></i><i class="hi" style="height:74%"></i><i class="hi" style="height:60%"></i><i style="height:34%"></i><i style="height:52%"></i></div>
+                </div>
+                <div class="tbl" style="padding:7px 8px"><table style="font-size:6.5px">
+                  <tr><th>Order</th><th>Status</th><th></th></tr>
+                  <tr><td style="font-weight:600">A-108</td><td><span class="st b">Docs pending</span></td><td>view →</td></tr>
+                  <tr><td style="font-weight:600">A-112</td><td><span class="st a">Settled</span></td><td>view →</td></tr>
+                  <tr><td style="font-weight:600">A-115</td><td><span class="st a">Settled</span></td><td>view →</td></tr>
+                </table></div>
+              </div>
+              <span class="tag-auto dtag" style="position:absolute;top:4px;right:4px">What we changed · one status language</span>
+              <span class="pin" style="left:24%;top:36%">1</span><span class="pin" style="left:70%;top:66%">2</span><span class="pin" style="left:50%;top:88%;background:#137A4E">3</span>
+            </div>
+            <span class="chip solid" style="position:absolute;bottom:5px;left:7px;font-size:6.5px;padding:2px 6px">AFTER · fixes in place</span>
+          </div>
+        </div></div><div class="base"></div></div>
+        <div class="strip"><span>1 · six tax lines → <b>one status chip</b></span><span>2 · seven tabs → <b>four</b></span><span>3 · three "inboxes" to check → <b>"awaiting you": 4</b></span></div>
+        <p class="note" style="margin-top:8px"><strong>Tablet:</strong> the same two before/after screens stack vertically, problems stay pinned. <strong>Phone:</strong> stacked, before above after below, pins tap to open the fix line.</p>
+      </div>
+      <div>
+        <span>Tablet — same unit, 25% shorter</span>
+        <div class="tablet"><div class="scr"><div class="ui" style="position:relative">
+          <div class="body" style="padding:8px 9px">
+            <div class="rowline" style="display:flex;gap:4px;font-family:var(--mono);font-size:6px"><span class="chip p2" style="font-size:6px;padding:1px 5px">BEFORE</span><span class="chip solid" style="font-size:6px;padding:1px 5px">AFTER</span></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px">
+              <div style="border:1px solid var(--ui-line);border-radius:4px;padding:5px;background:#FDF6F1"><div class="lbl" style="font-size:6px;color:var(--ui-sub);font-family:var(--mono)">TXN DETAIL</div><div style="font-size:9px;font-weight:700;margin-top:2px">3 inboxes</div><div style="display:flex;gap:3px;margin-top:5px"><span class="st d" style="font-size:5.5px">3 missing</span><span class="st c" style="font-size:5.5px">14:22</span></div></div>
+              <div style="border:1px solid var(--teal);border-radius:4px;padding:5px;background:#fff;position:relative"><span class="dtag" style="top:3px;right:3px;font-size:7px">what changed</span><div class="lbl" style="font-size:6px;color:var(--ui-sub);font-family:var(--mono)">AWAITING YOU</div><div style="font-size:9px;font-weight:700;margin-top:2px;color:var(--teal)">4 orders</div><div style="display:flex;gap:3px;margin-top:5px"><span class="st a" style="font-size:5.5px">settled</span><span class="st b" style="font-size:5.5px">docs</span></div></div>
+            </div>
+          </div>
+        </div></div></div>
+      </div>
+      <div>
+        <span>Phone — stacked</span>
+        <div class="phone"><div class="notch"></div><div class="scr" style="position:relative"><div class="ui">
+          <div class="body" style="padding:14px 9px">
+            <div style="font-family:var(--mono);font-size:6px;color:var(--warn)">BEFORE</div>
+            <div style="border:1px solid var(--ui-line);border-radius:5px;padding:6px;background:#FDF6F1;margin-top:4px"><b style="font-size:9px">3 inboxes to check</b><div style="font-size:7px;color:var(--ui-sub);margin-top:2px">7 tabs, 6 tax lines</div><span class="pin bad" style="left:60%;top:22%">2</span></div>
+            <div style="font-family:var(--mono);font-size:6px;color:var(--teal);margin-top:9px">AFTER</div>
+            <div style="border:1px solid var(--teal);border-radius:5px;padding:6px;margin-top:4px;position:relative"><span class="dtag" style="top:3px;right:3px;font-size:6.5px">what changed</span><b style="font-size:9px;color:var(--teal)">"Awaiting you": 4</b><div style="font-size:7px;color:var(--ui-sub);margin-top:2px">4 tabs, one status</div></div>
+            <div class="strip" style="margin-top:9px"><span>7 tabs → <b>4</b></span><span>3 inboxes → <b>1</b></span></div>
+          </div>
+        </div></div></div>
+      </div>
+    </div>
+    <div class="quote" style="margin-top:16px">Why this lands hardest: the client sees <strong>their own pain</strong> — the before is what they already have. That's the direction: recognition first, proof second.</div>
+  </div>
+</section>
+
+<!-- ================= 04 : DIRECTION 2 ================= -->
+<section id="d2">
+  <div class="wrap">
+    <span class="kicker">04 · Move 2 — the story</span>
+    <h2>Sell with journeys. Screens carry them.</h2>
+    <p class="lede">A buyer can't hire a "journey map" — but they can hire "your member gets her weekly report on Sunday". One story at a time: nothing to click, nothing to interpret, everything visible in a single frame.</p>
+
+    <div class="plane">
+      <div>
+        <span>Laptop — a single still frame, no carousel</span>
+        <div class="laptop"><div class="scr"><div class="ui" style="position:relative">
+          <div class="topice"><span class="dot"></span><span style="font-size:8px;font-weight:600">Weekly health report</span><span class="srch">Member: Asha</span><span class="av">A</span></div>
+          <div class="body" style="display:grid;grid-template-columns:repeat(4,1fr);gap:9px;position:relative;padding-bottom:26px">
+            <div class="ribbon"></div><div class="node" style="left:14px">1</div><div class="node" style="left:26.5%">2</div><div class="node" style="left:50%">3</div><div class="node" style="left:74%;background:#137A4E">✓</div>
+            <div>
+              <div class="mono" style="font-size:7px;color:var(--muted);letter-spacing:.1em">STEP 1 · LOGIN</div>
+              <div style="background:#fff;border:1px solid var(--ui-line);border-radius:6px;padding:8px;margin-top:5px;position:relative;z-index:2">
+                <div style="font-family:var(--head);font-weight:700;font-size:10px">Welcome back</div>
+                <div style="font-size:7.5px;color:var(--ui-sub);margin-top:2px">Phone: +91 ······ 241</div>
+                <div style="background:#F1F4F2;border:1px solid var(--ui-line);border-radius:4px;padding:5px 6px;margin-top:6px;font-size:7.5px;color:var(--ui-sub)">PIN</div>
+                <div class="goto" style="margin-top:6px">Continue</div>
+              </div>
+            </div>
+            <div>
+              <div class="mono" style="font-size:7px;color:var(--muted);letter-spacing:.1em">STEP 2 · TODAY</div>
+              <div style="background:#fff;border:1px solid var(--ui-line);border-radius:6px;padding:8px;margin-top:5px;position:relative;z-index:2">
+                <div style="display:flex;gap:6px">
+                  <div style="flex:1"><div class="bigval">9,240<small> steps</small></div><div style="font-size:7px;color:#137A4E;margin-top:1px">▲ 12% vs weekday</div></div>
+                  <div style="flex:1;border-left:1px dashed var(--ui-line);padding-left:6px"><div class="bigval">612<small> kcal</small></div><div style="font-size:7px;color:var(--ui-sub);margin-top:1px">burned today</div></div>
+                </div>
+                <div class="strip" style="margin-top:7px"><span style="font-size:8px">walk auto-logged · <b>no manual entry</b></span></div>
+              </div>
+            </div>
+            <div>
+              <div class="mono" style="font-size:7px;color:var(--muted);letter-spacing:.1em">STEP 3 · THE ASK</div>
+              <div style="background:#fff;border:1px solid var(--ui-line);border-radius:6px;padding:8px;margin-top:5px;position:relative;z-index:2">
+                <table style="width:100%;font-size:7.5px;border-collapse:collapse">
+                  <tr><td style="font-weight:600">Steps</td><td style="text-align:right">9,240</td></tr>
+                  <tr><td>Active min</td><td style="text-align:right">42</td></tr>
+                  <tr><td>Kcal</td><td style="text-align:right">612</td></tr>
+                  <tr><td>Sleep</td><td style="text-align:right">7h 10m</td></tr>
+                </table>
+                <div style="font-size:7px;color:var(--ui-sub);margin-top:5px;border-top:1px dashed var(--ui-line);padding-top:4px">"give me last 7 days" is one tap from here</div>
+              </div>
+            </div>
+            <div>
+              <div class="mono" style="font-size:7px;color:var(--teal);letter-spacing:.1em">STEP 4 · OUTCOME</div>
+              <div style="background:var(--teal-wash);border:1px solid var(--teal);border-radius:6px;padding:8px;margin-top:5px;position:relative;z-index:2">
+                <div class="mono" style="font-size:7px;color:var(--teal);letter-spacing:.08em">WEEK OF 26 OCT</div>
+                <table style="width:100%;font-size:7.5px;border-collapse:collapse;margin-top:3px">
+                  <tr><td style="font-weight:700;color:var(--teal)">Avg steps / day</td><td style="text-align:right"><b style="color:var(--teal)">8,510</b></td></tr>
+                  <tr><td>Best day</td><td style="text-align:right">Wed · 11,204</td></tr>
+                  <tr><td>Active days</td><td style="text-align:right">6 / 7</td></tr>
+                </table>
+                <div style="font-size:7px;color:var(--soft);margin-top:5px;border-top:1px dashed #BBD9D5;padding-top:4px">Week summary written in 1 message — <b>was: 5 screenshots per week</b></div>
+              </div>
+            </div>
+            <div class="strip" style="position:absolute;bottom:6px;left:0;right:0"><span>journey shown: <b>4 screens</b></span><span>client's decision: <b>send the report on Sunday</b></span><span>user taps saved: <b>11 → 4</b></span></div>
+          </div>
+        </div></div><div class="base"></div></div>
+        <p class="note" style="margin-top:8px"><strong>Phone:</strong> the four screens of this same story become a vertical timeline — a thin rail on the left of each step, same numbers. <strong>Tablet:</strong> same story, 3 steps and a "+1" — the long way is still visible, just denser. No screen is cut from the story in any viewport; only the layout changes.</p>
+      </div>
+      <div>
+        <span>Phone — the same story becomes a timeline</span>
+        <div class="phone" style="width:58%"><div class="notch"></div><div class="scr"><div class="ui hm">
+          <div class="hd"><div class="h">Asha's week</div><div class="s">week of 26 oct</div></div>
+          <div class="bd" style="position:relative;padding-left:22px">
+            <div style="position:absolute;left:13px;top:8px;bottom:8px;width:1px;background:#BFD9D5"></div>
+            <div style="position:relative;margin-top:8px"><span style="position:absolute;left:-15px;top:2px;width:9px;height:9px;border-radius:50%;background:var(--teal);border:2px solid #fff"></span><b style="font-size:8px">Mon–Tue</b><div style="font-size:7px;color:var(--ui-sub)">steps logged silently</div></div>
+            <div style="position:relative;margin-top:10px"><span style="position:absolute;left:-15px;top:2px;width:9px;height:9px;border-radius:50%;background:var(--teal);border:2px solid #fff"></span><b style="font-size:8px">Wed · 11,204 steps</b><div style="font-size:7px;color:var(--ui-sub)">best day</div></div>
+            <div style="position:relative;margin-top:10px"><span style="position:absolute;left:-15px;top:2px;width:9px;height:9px;border-radius:50%;background:var(--teal);border:2px solid #fff"></span><b style="font-size:8px">Sun 09:00</b><div style="background:#fff;border:1px solid var(--line);border-radius:5px;margin-top:3px;padding:6px"><div class="mono" style="font-size:6px;color:var(--teal);letter-spacing:.1em">YOUR WEEK</div><div style="font-family:var(--head);font-weight:700;font-size:12px;color:var(--teal);margin-top:2px">8,510 <small style="font-size:6.5px;color:var(--ui-sub);font-family:var(--body)">avg steps</small></div><div style="font-size:6.5px;color:var(--ui-sub)">6/7 active · 42 min/day</div></div></div>
+            <div class="goto" style="margin-top:10px">Share with my coach</div>
+          </div>
+        </div></div></div>
+      </div>
+      <div>
+        <span>Tablet — dense 3 + peek</span>
+        <div class="tablet"><div class="scr"><div class="ui hm">
+          <div class="bd" style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:10px 9px">
+            <div style="background:#fff;border:1px solid var(--ui-line);border-radius:5px;padding:6px"><div class="mono" style="font-size:6px;color:var(--muted)">STEP 1</div><div style="font-size:8px;font-weight:600;margin-top:3px">Login</div><div style="font-size:6.5px;color:var(--ui-sub);margin-top:2px">PIN, no password</div></div>
+            <div style="background:#fff;border:1px solid var(--ui-line);border-radius:5px;padding:6px"><div class="mono" style="font-size:6px;color:var(--muted)">STEP 2</div><div style="font-size:8px;font-weight:600;margin-top:3px">Daily feed</div><div style="font-size:6.5px;color:var(--ui-sub);margin-top:2px">auto-logged</div></div>
+            <div style="background:var(--teal-wash);border:1px solid var(--teal);border-radius:5px;padding:6px"><div class="mono" style="font-size:6px;color:var(--teal)">STEP 3</div><div style="font-size:8px;font-weight:700;margin-top:3px;color:var(--teal)">Report</div><div style="font-size:6.5px;color:var(--soft);margin-top:2px">one message</div></div>
+          </div>
+          <div class="mono" style="font-size:6.5px;color:var(--muted);text-align:right;padding:0 9px 7px">outcome next →</div>
+        </div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 : DIRECTION 3 ================= -->
+<section id="d3">
+  <div class="wrap">
+    <span class="kicker">05 · Move 3 — the hero shot</span>
+    <h2>One screen, made impossible to skim</h2>
+    <p class="lede">For work that has no "before" (greenfield). The screen fills the frame and arrives with the reason beside it — big enough to be the piece a buyer screenshots and forwards to their CEO.</p>
+
+    <div class="plane">
+      <div>
+        <span>Laptop — hero + docked impact cards</span>
+        <div class="laptop"><div class="scr"><div class="ui" style="position:relative;display:grid;grid-template-columns:1.35fr 1fr;gap:0">
+          <!-- hero screen -->
+          <div class="ui" style="position:relative;padding-right:0">
+            <div class="topice"><span class="dot"></span><span style="font-size:8px;font-weight:600">Advisor cockpit</span><span class="srch">Client, order, ticker…</span><span class="av">MJ</span></div>
+            <div class="side"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+            <div class="body" style="position:relative;padding-top:9px">
+              <div class="krow">
+                <div class="kpi" style="border-color:var(--teal);background:var(--teal-wash)"><div class="lbl">Awaiting you</div><div class="val" style="color:var(--teal)">4</div><div class="dlt up">was 14, before the cockpit</div></div>
+                <div class="kpi"><div class="lbl">Review today</div><div class="val">2 <span style="font-size:7px;color:var(--ui-sub);font-weight:400">calls booked</span></div></div>
+                <div class="kpi"><div class="lbl">Portfolio risk</div><div class="val">B+</div><div class="dlt" style="color:var(--ui-sub)">stable 3 wk</div></div>
+              </div>
+              <div class="cardrow">
+                <div class="pane"><div class="ph"><b>Client activity</b><span>this week</span></div><div class="bars"><i style="height:34%"></i><i style="height:48%"></i><i class="hi" style="height:82%"></i><i class="hi" style="height:64%"></i><i style="height:44%"></i></div><div class="bars lbls"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span></div></div>
+                <div class="tbl"><table>
+                  <tr><th>Client</th><th>Status</th><th></th></tr>
+                  <tr><td style="font-weight:600">R. Sharma</td><td><span class="st b">Docs pending</span></td><td>→</td></tr>
+                  <tr><td style="font-weight:600">K. Menon</td><td><span class="st a">Settled</span></td><td>→</td></tr>
+                  <tr><td style="font-weight:600">A. Fernandes</td><td><span class="st a">Settled</span></td><td>→</td></tr>
+                  <tr><td style="font-weight:600">P. Iyer</td><td><span class="st c">Review booked</span></td><td>→</td></tr>
+                </table></div>
+              </div>
+              <span class="dtag dark" style="top:5px;right:9px">What we changed · one language for "done"</span>
+              <span class="pin" style="left:36%;top:30%">1</span><span class="pin" style="left:70%;top:70%">2</span>
+            </div>
+            <span class="chip solid" style="position:absolute;bottom:5px;left:9px;font-size:6.5px;padding:2px 6px">1 screen · read alone</span>
+          </div>
+          <!-- docked cards -->
+          <div style="background:var(--ui-bg);border-left:1px dashed var(--ui-line);padding:11px 10px">
+            <div class="why"><b class="t">1 · Why this screen exists</b>Two of the three previous tools showed "an order's state" as five different things. We rebuilt <b>one language</b> and applied it to all 10 screens.</div>
+            <div class="why"><b class="t">2 · What went away</b>All the old per-team colour palettes went in the bin. We argued for it on the call — the reasoning is in the left frame.</div>
+            <div class="why" style="border-color:#CBD5D0;border-left-color:#CBD5D0"><b class="t" style="color:var(--soft)">The result</b>Advisor's morning check: <b>11 steps → 3</b>. Signed off at handoff, 22 Sep.</div>
+          </div>
+        </div></div><div class="base"></div></div>
+        <p class="note" style="margin-top:8px"><strong>Tablet:</strong> same, cards drop under the hero in a 2-up rail. <strong>Phone:</strong> the screen crops to the decision region — the table and "awaiting you" chip — and the reason cards sit below, full-width.</p>
+      </div>
+      <div>
+        <span>Tablet — hero ~78%, cards 2-up beneath</span>
+        <div class="tablet"><div class="scr"><div class="ui hm">
+          <div class="bd">
+            <div style="border:1px solid var(--ui-line);border-radius:6px;background:#fff;position:relative;padding:8px 9px">
+              <span class="dtag" style="top:4px;right:4px;font-size:7px">what changed</span>
+              <div class="krow" style="gap:5px"><div class="kpi" style="border-color:var(--teal);background:var(--teal-wash);padding:5px 6px"><div class="lbl">Awaiting you</div><div class="val" style="font-size:12px;color:var(--teal)">4</div></div><div class="kpi" style="padding:5px 6px"><div class="lbl">Review</div><div class="val" style="font-size:12px">2</div></div><div class="kpi" style="padding:5px 6px"><div class="lbl">Risk</div><div class="val" style="font-size:12px">B+</div></div></div>
+              <div class="bars" style="height:32px;margin-top:7px"><i style="height:36%"></i><i class="hi" style="height:78%"></i><i class="hi" style="height:60%"></i><i style="height:42%"></i></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:7px">
+              <div class="why" style="padding:6px 7px;font-size:9px"><b class="t" style="font-size:7.5px">1 · Why</b>one language for "done"</div>
+              <div class="why" style="padding:6px 7px;font-size:9px;border-color:#CBD5D0;border-left-color:#CBD5D0"><b class="t" style="font-size:7.5px;color:var(--soft)">Delta</b>11 steps → 3</div>
+            </div>
+          </div>
+        </div></div></div>
+      </div>
+      <div>
+        <span>Phone — crop to decision region</span>
+        <div class="phone"><div class="notch"></div><div class="scr"><div class="ui hm">
+          <div class="hd"><div class="h">Advisor cockpit</div></div>
+          <div class="bd" style="position:relative">
+            <span class="dtag" style="top:6px;right:6px;font-size:6.5px">what changed</span>
+            <div style="background:var(--teal-wash);border:1px solid var(--teal);border-radius:5px;padding:7px"><div class="lbl" style="font-family:var(--mono);font-size:6px;color:var(--teal)">AWAITING YOU</div><div class="bigval" style="font-size:16px;color:var(--teal)">4</div><div style="font-size:6.5px;color:var(--soft)">was 14</div></div>
+            <div style="background:#fff;border:1px solid var(--ui-line);border-radius:5px;padding:7px;margin-top:7px;font-size:8px">
+              <b>R. Sharma</b><div style="margin-top:2px"><span class="st b">Docs pending</span></div>
+              <div style="margin-top:5px"><b>K. Menon</b></div><div style="margin-top:2px"><span class="st a">Settled</span></div>
+            </div>
+            <div class="why" style="margin-top:9px;font-size:9px"><b class="t" style="font-size:7px">Why this screen</b>Two tools disagreed on "done". One language now, on all 10 screens.</div>
+            <div class="goto" style="margin-top:8px">See what we changed</div>
+          </div>
+        </div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 ================= -->
+<section id="page">
+  <div class="wrap">
+    <span class="kicker">06 · How a case study reads</span>
+    <h2>One page, one argument, zero jargon</h2>
+    <div class="cols">
+      <div class="bp">
+        <div class="chrome"><i></i><i></i><i></i><span class="crumb">maitridesigns.com/work/meridian-advisor-cockpit</span></div>
+        <div class="grid">
+          <div class="main">
+            <span class="mono" style="font-size:9px;color:var(--teal);letter-spacing:.14em">WORK › UI/UX &amp; PRODUCT DESIGN</span>
+            <h4>Advisor cockpit — three tools into one workspace</h4>
+            <div class="strip"><span>3 tools → <b>1</b></span><span>morning check <b>11 steps → 3</b></span><span>handoff accepted · <b>first review</b></span></div>
+            <div class="sec"><span class="k dim">01 · The problem</span><p>Two legacy tools disagreed on what an order's "state" even was. We found that before we changed anything.</p></div>
+            <div class="sec"><span class="k">02 · Their before, our after</span>
+              <div class="ba"><span>before · 3 problems pinned</span><span>after · fixes in place</span></div>
+            </div>
+            <div class="sec"><span class="k">03 · The stories</span><p>Three journeys: booking, opening a mandate, and the weekly report. Each ends at one number.</p></div>
+            <div class="sec"><span class="k">04 · What we changed</span><p class="mono" style="font-size:10px;color:var(--muted)">One plain sentence per change, numbered on the screens above. The full workings pack is what serious evaluators get on request.</p></div>
+            <div class="sec"><span class="k dim">05 · What we'd verify next</span><p>Forward-looking measures, then the widget appendix, then the testimonial, then one CTA.</p></div>
+          </div>
+          <div class="aside">
+            <a class="on" href="#go">The problem</a><a>Their before, our after</a><a>The stories</a><a>What we changed</a><a>What's next</a><a>★★ Testimonial</a><a class="on" href="#go_next" style="color:var(--teal);background:var(--teal-wash)">Start a project →</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3>What changes on the page</h3>
+        <ul class="t">
+          <li><strong>Before/after goes first</strong>, not the polished screenshot. Recognition before admiring.</li>
+          <li><strong>Impact numbers appear once at the top</strong> as a whole — then repeated where they happened. No "reveal step by step" animation; the manager who came for the number shouldn't wait for it.</li>
+          <li><strong>Testimonial moves above the appendix</strong>, so the last thing a reader sees is proof, not parts.</li>
+          <li><strong>Sticky contents on the right</strong> — exactly as planned. On phone they become three small tabs (Problem · Screens · Impact), not a drawer.</li>
+          <li><strong>Every screen on the page carries a tag</strong>, one plain sentence each. Nothing ships naked — and no internal jargon reaches the buyer.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 07 ================= -->
+<section id="go_next" style="border-bottom:0">
+  <div class="wrap">
+    <span class="kicker">07 · The ask</span>
+    <h2>What we need approved — and what each one wins</h2>
+    <table style="width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:1px solid var(--line);margin-top:16px">
+      <tr><th style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)">Move</th><th style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)">Where it's used</th><th style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)">What it wins</th><th style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)">Build</th></tr>
+      <tr><td style="padding:11px 12px;border-bottom:1px solid var(--line)"><b>1 · The comparison</b></td><td style="padding:11px 12px;border-bottom:1px solid var(--line)">Revamp case studies</td><td style="padding:11px 12px;border-bottom:1px solid var(--line)">The buyer recognises their own problem in under 5 seconds</td><td style="padding:11px 12px;border-bottom:1px solid var(--line)" class="mono">medium</td></tr>
+      <tr><td style="padding:11px 12px;border-bottom:1px solid var(--line)"><b>2 · The story</b></td><td style="padding:11px 12px;border-bottom:1px solid var(--line)">Case-study spine — 3 flows per case</td><td style="padding:11px 12px;border-bottom:1px solid var(--line)">The buyer can retell our value to their boss in one sentence</td><td style="padding:11px 12px;border-bottom:1px solid var(--line)" class="mono">medium</td></tr>
+      <tr><td style="padding:11px 12px;border-bottom:1px solid var(--line)"><b>3 · The hero shot</b></td><td style="padding:11px 12px;border-bottom:1px solid var(--line)">Greenfield showcases</td><td style="padding:11px 12px;border-bottom:1px solid var(--line)">The one screen people screenshot and forward</td><td style="padding:11px 12px;border-bottom:1px solid var(--line)" class="mono">small</td></tr>
+      <tr><td style="padding:11px 12px"><b>Proof layer</b> — tag cards + result strips + contents rail</td><td style="padding:11px 12px">Every case page</td><td style="padding:11px 12px">The craft that survives the 90-second skim — visible without ever jargoning</td><td style="padding:11px 12px" class="mono">small–medium</td></tr>
+    </table>
+    <div class="cols" style="margin-top:26px">
+      <div>
+        <h3>Rollout, cheapest-first</h3>
+        <ol class="t" style="padding-left:20px">
+          <li><strong>Step 1:</strong> rebuild the <strong>/work gallery</strong> — one comparison per case, framed right. Smallest build, most visible change — the site starts selling before anything else moves.</li>
+          <li><strong>Step 2:</strong> upgrade <strong>one case study end-to-end</strong> as the proof of the whole system.</li>
+          <li><strong>Step 3:</strong> roll the pattern across the remaining cases.</li>
+        </ol>
+      </div>
+      <div>
+        <h3>Two honest notes for the meeting</h3>
+        <ul class="t">
+          <li>The figures in this deck are <strong>illustrative</strong> — drawn from the placeholder case roster (Meridian / Nimbus / Portside). Before any of this meets a client, screens and numbers need signed-off real work, and anything unmeasured is said so plainly. That honesty is itself part of the pitch — global buyers reward studios that show their working.</li>
+          <li>The screens here are <strong>CSS, not images</strong> — content changes are text edits, and this prototype doubles as the real gallery's markup. Nothing here needs re-shooting.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer><div class="wrap">
+  <p><strong>Basis:</strong> direction reviewed with the design team — <b>Arjun</b> (lead, UX + visual), <b>Anuj</b> (screen density), <b>Meera</b> (business), <b>Priya</b> (build on the current static Next.js + Tailwind stack). Full evaluation lives in the repo (<span class="mono">mockup-presentation/</span>).</p>
+  <p>Illustrative content only — fictional clients from the approved placeholder roster (Meridian / Nimbus / Portside / Helix). Real work replaces this in the content pass.</p>
+</div></footer>
+
+</body>
+</html>
