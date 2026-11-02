@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ugam Education Foundation — case study framework demo · Maitri Designs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Maitree:wght@400;500;600;700&family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#17231F; --soft:#485450; --muted:#78847D;
+  --teal:#0B7373; --teal-deep:#07575A; --teal-wash:#EAF4F2;
+  --sky:#7FB8BE; --sun:#F2A03D; --coral:#E4572E;
+  --paper:#FBFAF7; --card:#FFFFFF; --line:#E4E8E3; --washed:#F3F2ED;
+  --warn:#B4552D; --warn-wash:#F8EFE9;
+  --head:'Maitree',serif; --body:'Lato',sans-serif;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);background:var(--paper);color:var(--ink);font-size:16.5px;line-height:1.65}
+img{max-width:100%;display:block}
+.wrap{max-width:1160px;margin:0 auto;padding:0 26px}
+.label{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
+.label.dim{color:var(--muted)}
+h1{font-family:var(--head);font-weight:700;font-size:clamp(30px,4.6vw,54px);letter-spacing:.01em;line-height:1.14;margin:.35em 0 .15em}
+h2{font-family:var(--head);font-weight:600;font-size:clamp(24px,3vw,36px);line-height:1.2;margin:0 0 8px}
+h3{font-family:var(--head);font-weight:600;font-size:20px;margin:0 0 6px}
+p.lede{font-size:18.5px;color:var(--soft);max-width:58ch}
+.note{font-size:13px;color:var(--muted)}
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+.chip{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;padding:5px 12px;border:1px solid #CBD5D0;border-radius:99px;background:#fff;color:var(--soft)}
+.chip.solid{background:var(--teal);border-color:var(--teal);color:#fff}
+.chip.dark{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip.warn{background:var(--warn-wash);border-color:var(--warn);color:var(--warn)}
+.dtag{display:inline-block;background:var(--teal);color:#fff;font-size:11px;font-weight:700;letter-spacing:.05em;padding:4px 10px;border-radius:4px}
+.dtag.dark{background:var(--ink)}
+.num{display:inline-flex;width:24px;height:24px;border-radius:50%;background:var(--coral);color:#fff;font-weight:700;font-size:13px;align-items:center;justify-content:center;flex:0 0 auto}
+.num.ok{background:#137A4E}
+.callout{background:var(--teal-wash);border-left:3px solid var(--teal);padding:14px 18px;border-radius:0 6px 6px 0;max-width:72ch}
+
+/* top bar + jump rail */
+.topbar{border-bottom:1px solid var(--line);background:#fff;position:relative;z-index:40}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:13px;padding-bottom:13px}
+.topbar .b{font-weight:900}
+.hero-band{border-top:1px solid var(--line)}
+.rail{display:block;align-self:stretch;padding-top:6px}
+.rail .railhead{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 10px 12px}
+.rail a{display:block;color:var(--muted);text-decoration:none;padding:8px 12px;border-left:2px solid transparent}
+.rail a:hover{color:var(--teal)}
+.rail a.on{color:var(--teal);border-left-color:var(--teal);font-weight:700}
+.hero-row{display:grid;grid-template-columns:1fr 168px;gap:44px;align-items:start}
+.pills{display:none;position:fixed;left:0;right:0;bottom:0;z-index:50;background:#fff;border-top:1px solid var(--line);padding:9px 14px;gap:8px;justify-content:center}
+.pills a{text-decoration:none;color:var(--ink);font-weight:700;font-size:13.5px;border:1px solid #CBD5D0;border-radius:99px;padding:7px 18px;background:#fff}
+.pills a.on{background:var(--teal);border-color:var(--teal);color:#fff}
+@media(max-width:1080px){.rail{display:none}.hero-row{grid-template-columns:1fr}}
+@media(max-width:760px){.pills{display:flex} body{padding-bottom:58px}}
+
+/* hero */
+.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.two{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start}
+@media(max-width:880px){.two{grid-template-columns:1fr}}
+figure{margin:0}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:8px}
+.shot{border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 14px 34px rgba(23,35,31,.09);background:#fff}
+
+/* showreel — full-bleed strip under the hero */
+.showreel{padding:26px 0 30px;border-bottom:1px solid var(--line);background:#fff}
+.showreel .reelhead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:16px}
+.reelbg{overflow:hidden;width:100%}
+.reel-track{display:flex;gap:14px;width:max-content;animation:reel 55s linear infinite}
+.reel-track img{height:240px;width:auto;border-radius:8px;border:1px solid var(--line)}
+.showreel .reelbg:hover .reel-track{animation-play-state:paused}
+@keyframes reel{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){.reel-track{animation:none}.reelbg{overflow-x:auto}}
+
+/* verdict strip */
+.verdict{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+@media(max-width:700px){.verdict{grid-template-columns:1fr}}
+.vchip{background:#fff;border:1px solid var(--teal);border-radius:10px;padding:18px 18px 15px}
+.vchip .n{font-family:var(--head);font-weight:700;font-size:30px;color:var(--teal);letter-spacing:.01em}
+.vchip .t{font-size:14px;color:var(--soft);margin-top:3px}
+.vchip .s{font-size:11.5px;color:var(--muted);margin-top:7px;border-top:1px dashed #CBE2DE;padding-top:7px}
+
+/* before / after */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 14px 34px rgba(23,35,31,.08)}
+@media(max-width:820px){.ba{grid-template-columns:1fr}}
+.ba .side{padding:26px 26px 30px;position:relative}
+.ba .side.before{background:#F5F4EE;border-right:1px dashed var(--line)}
+.afterimg{border:1px solid var(--line);border-radius:8px;background:#fff}
+.fixlist{margin:18px 0 0;padding:0;list-style:none}
+.fixlist li{display:flex;gap:10px;margin-top:11px;font-size:14px;color:var(--soft);align-items:flex-start}
+.ba .panel-label{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px}
+.mock-old{background:#2B2E2B;border-radius:8px;padding:34px 22px 26px;position:relative}
+.mock-old .box{border:3px solid #55584F;width:132px;margin:0 auto;padding:20px 10px 14px;text-align:center;border-radius:6px}
+.mock-old .glyph{font-family:var(--head);font-size:15px;color:#D9D7CB;transform:none;display:block}
+.mock-old .line{height:4px;background:#55584F;border-radius:2px;margin:9px auto;width:56px}
+.mock-old .caption{text-align:center;font-size:11px;color:#9AA096;margin-top:12px;letter-spacing:.1em;text-transform:uppercase}
+.pinned{position:absolute;background:var(--coral);color:#fff;font-weight:700;font-size:13px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px rgba(255,255,255,.75);z-index:3}
+
+/* stories — screens big, support text below */
+.story{margin-top:40px}
+.story .sthead{margin-bottom:16px}
+.story .hat{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.story h3{font-size:24px;margin:8px 0 0;font-family:var(--head)}
+.story .imgs{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.story .imgs.single{grid-template-columns:1fr}
+.story .imgs img{width:100%}
+.story .support{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap;margin-top:16px;max-width:none}
+.story .support p{margin:0;font-size:15px;color:var(--soft);max-width:62ch;flex:1 1 340px}
+.story .support .meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0}
+.story .outcome{display:inline-flex;gap:10px;align-items:center;background:var(--teal-wash);border:1px solid var(--teal);border-radius:8px;padding:9px 14px;font-weight:700;color:var(--teal-deep);font-size:14px}
+
+/* testimonial */
+.tst{background:#fff;border:1px solid var(--line);border-radius:12px;padding:40px 44px;position:relative;box-shadow:0 14px 34px rgba(23,35,31,.07)}
+.tst .quote{font-family:var(--head);font-size:clamp(20px,2.6vw,28px);line-height:1.4;color:var(--ink)}
+.tst .slotnote{margin-top:18px;border:1px dashed var(--line);background:var(--washed);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--muted)}
+.verify{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;align-items:center}
+
+/* system grid point 7 */
+.sys{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+@media(max-width:900px){.sys{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.sys{grid-template-columns:1fr}}
+.syscard{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+.syscard .imgbox{background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:14px;min-height:190px}
+.syscard .imgbox img{max-height:170px;width:auto;max-width:100%}
+.syscard .cap{padding:12px 16px 15px}
+.syscard .cap b{font-size:14.5px}
+.syscard .cap span{display:block;font-size:12.5px;color:var(--muted);margin-top:3px}
+
+/* AI section */
+.ai{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px}
+@media(max-width:820px){.ai{grid-template-columns:1fr}}
+.ai .tool{background:#fff;border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:10px;padding:22px 24px}
+.ai .tool .stage{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.ai .tool h3{margin:8px 0 4px;font-size:24px;font-family:var(--head)}
+.ai .tool .line{font-size:14.5px;color:var(--soft)}
+.ai .tool .use{margin-top:14px;border-top:1px dashed var(--line);padding-top:12px;font-size:13.5px;color:var(--soft)}
+.ai .tool .use b{color:var(--ink)}
+.logrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+
+/* footer */
+footer{padding:52px 0 70px}
+.cta{display:inline-block;background:var(--teal);color:#fff;font-weight:700;padding:13px 26px;border-radius:8px;text-decoration:none;font-size:15.5px}
+.cta:hover{background:var(--teal-deep)}
+.nextrow{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-top:36px;color:var(--muted);font-size:13.5px}
+.demo-banner{background:var(--warn-wash);border-bottom:1px solid #E8CDBE;padding:8px 0;text-align:center;font-size:12.5px;color:var(--warn)}
+@media print{.rail,.pills,.demo-banner{display:none}section{padding:34px 0}}
+</style>
+</head>
+<body>
+
+<div class="demo-banner">Review demo — Framework A &ldquo;The verdict&rdquo;, built on the real Ugam project. Text and images from maitridesigns.com. Blocks marked <b>pending</b> need signed content before going live.</div>
+
+<header class="topbar"><div class="wrap">
+  <span class="b">Maitri Designs</span>
+  <span class="note">Work › Ugam Education Foundation · framework demo, version 1 · Nov 2026</span>
+</div></header>
+
+<!-- jump rail: phone = 3 pills -->
+<nav class="pills" aria-label="Section navigation">
+  <a href="#problem">Problem</a>
+  <a href="#verdict">Outcome</a>
+  <a href="#system">System</a>
+</nav>
+
+<main>
+
+<!-- ============ 01 · one line ============ -->
+<section style="border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="hero-row">
+      <div>
+        <div class="two">
+          <div>
+            <span class="label">Case study › Ugam Education Foundation · India · 2019–2020</span>
+            <h1>An old identity held its girls in a box. We opened a sky.</h1>
+            <p class="lede">Ugam Education Foundation works with the local government in rural Jharkhand to improve education in residential girls&rsquo; government schools (KGBV). Its identity had grown restrictive — we rebuilt it so the same brand could speak to the girls in the schools and to the donors funding them.</p>
+            <div class="meta">
+              <span class="chip solid">Brand &amp; strategy</span>
+              <span class="chip">Web design</span>
+              <span class="chip">Annual report</span>
+              <span class="chip">Print &amp; campaigns</span>
+            </div>
+          </div>
+          <div>
+            <figure class="shot">
+              <img src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-Branding-Cover.jpg" alt="Ugam Education Foundation rebranding cover — the new identity applied" loading="eager">
+            </figure>
+            <figcaption>A headliner application of the new identity, live from maitridesigns.com.</figcaption>
+          </div>
+        </div>
+      </div>
+      <nav class="rail" aria-label="On this page">
+        <p class="railhead">On this page</p>
+        <a href="#problem">The problem</a>
+        <a href="#verdict">The outcome</a>
+        <a href="#ba">Before &amp; after</a>
+        <a href="#voice">Their words</a>
+        <a href="#stories">Three stories</a>
+        <a href="#system">The system</a>
+        <a href="#ai">How AI helped</a>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- ============ showreel · full-bleed ============ -->
+<section class="showreel">
+  <div class="wrap reelhead">
+    <span class="label dim">The showreel · everything this identity shipped</span>
+    <span class="note">Scrolls slowly · pauses when you hover</span>
+  </div>
+  <div class="reelbg" aria-label="Showreel of Ugam Identity applications">
+    <div class="reel-track">
+      <img src="https://maitridesigns.com/wp-content/uploads/2021/06/01-MaitriDesigns-Ugam-AnnualReport-Cover.jpg" alt="Annual report cover" loading="eager">
+      <img src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-Brochure-Intro.jpg" alt="Brochure intro" loading="eager">
+      <img src="https://maitridesigns.com/wp-content/uploads/2021/06/03-MaitriDesigns-Ugam-GirlsPosters.jpg" alt="Girls empowerment posters" loading="eager">
+      <img src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-WebsiteDesign.jpg" alt="Website design" loading="eager">
+      <img src="https://maitridesigns.com/wp-content/uploads/2021/06/04-MaitriDesigns-Ugam-MHM-poster.jpg" alt="Menstrual hygiene poster" loading="lazy">
+      <img src="https://maitridesigns.com/wp-content/uploads/2021/06/02-MaitriDesigns-Ugam-AnnualReport-Page1.jpg" alt="Annual report page" loading="lazy">
+      <img src="https://maitridesigns.com/wp-content/uploads/2021/06/05-MaitriDesigns-Ugam-Urja.jpg" alt="Urja girls magazine" loading="lazy">
+      <img src="https://maitridesigns.com/wp-content/uploads/2021/06/00-MaitriDesigns-Ukti-Ugam-Covers.jpg" alt="Ukti newsletter" loading="lazy">
+      <img src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-Brochure-Cover.jpg" alt="Brochure cover" loading="lazy">
+      <img src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-Branding-BizCards.jpg" alt="Business cards" loading="lazy">
+      <!-- duplicated track for a seamless loop -->
+      <img src="https://maitridesigns.com/wp-content/uploads/2021/06/01-MaitriDesigns-Ugam-AnnualReport-Cover.jpg" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-Brochure-Intro.jpg" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://maitridesigns.com/wp-content/uploads/2021/06/03-MaitriDesigns-Ugam-GirlsPosters.jpg" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-WebsiteDesign.jpg" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://maitridesigns.com/wp-content/uploads/2021/06/04-MaitriDesigns-Ugam-MHM-poster.jpg" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://maitridesigns.com/wp-content/uploads/2021/06/02-MaitriDesigns-Ugam-AnnualReport-Page1.jpg" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://maitridesigns.com/wp-content/uploads/2021/06/05-MaitriDesigns-Ugam-Urja.jpg" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://maitridesigns.com/wp-content/uploads/2021/06/00-MaitriDesigns-Ukti-Ugam-Covers.jpg" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-Brochure-Cover.jpg" alt="" aria-hidden="true" loading="lazy">
+      <img src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-Branding-BizCards.jpg" alt="" aria-hidden="true" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 · the problem ============ -->
+<section id="problem">
+  <div class="wrap">
+    <span class="label">01 · The problem</span>
+    <h2>What the foundation told us, in their words</h2>
+    <div class="two" style="margin-top:22px">
+      <div>
+        <p style="max-width:62ch">The brief was direct: redesign Ugam&rsquo;s identity. The old one was <em>&ldquo;becoming very restrictive and structured&rdquo;</em> — everything sat inside boxes, and the colours were <em>&ldquo;very dark and strong.&rdquo;</em></p>
+        <p style="max-width:62ch">Meanwhile the brand had to do two jobs at once: feel <em>&ldquo;aspirational and feminine&rdquo;</em> to the school girls it exists for in rural India, and stay credible to the donors and stakeholders supporting it from metropolitan cities.</p>
+        <p style="max-width:62ch">One identity, two very different audiences. That tension is what made the project interesting — and what every decision below answers.</p>
+      </div>
+      <div>
+        <div class="callout">
+          <span class="label">What we were told to keep</span>
+          <p style="margin:8px 0 0;font-size:15px;color:var(--soft)">Three motifs carried the old brand: a <b>sun</b>, a <b>kite</b> and a <b>pencil</b>. The brief asked for a new logo working in <b>both English and Devanagari (Hindi)</b> — the audience writes in two scripts, the brand must too.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 · the verdict strip (viewport 1 rule honored at top via chips) ============ -->
+<section id="verdict" style="background:var(--washed)">
+  <div class="wrap">
+    <span class="label">02 · The outcome at a glance</span>
+    <h2>What this project changed</h2>
+    <div class="verdict">
+      <div class="vchip">
+        <span class="n">2 scripts, 1 mark</span>
+        <span class="t">One logo that works in English and Devanagari — no separate brand per language.</span>
+        <span class="s">What changed: the box opened, the brand now breathes across both scripts.</span>
+      </div>
+      <div class="vchip">
+        <span class="n">3 kept&nbsp;+&nbsp;1 added</span>
+        <span class="t">Sun, kite and pencil stayed. The sky joined them.</span>
+        <span class="s">Formation, not replacement — continuity from old identity to new.</span>
+      </div>
+      <div class="vchip">
+        <span class="n">1 system → 8 touchpoints</span>
+        <span class="t">Website, annual report, brochure, 2 poster campaigns, magazine, newsletter, business cards.</span>
+        <span class="s">Everything after the logo was assembled from one identity.</span>
+      </div>
+    </div>
+    <p class="note" style="margin-top:14px">Outcome numbers on this strip are structural facts from the published project record. Impact measurement (e.g. donor response) was not tracked in 2019 — see &ldquo;<a href="#voice" style="color:var(--teal)">what we&rsquo;d verify next</a>.&rdquo;</p>
+  </div>
+</section>
+
+<!-- ============ 04 · before / after ============ -->
+<section id="ba">
+  <div class="wrap">
+    <span class="label">03 · Their before, our after</span>
+    <h2>The problems, and where each fix landed</h2>
+    <p class="lede" style="margin-top:10px">Left: the old identity as the brief describes it, with its problems numbered. Right: the new mark, live from the published project, with the fixes matched to the same numbers.</p>
+
+    <div class="ba" style="margin-top:26px">
+      <div class="side before">
+        <span class="panel-label label dim" style="color:#8A857A">Before · reconstructed from the brief</span>
+        <div class="mock-old">
+          <div class="box">
+            <span class="glyph">☀</span>
+            <span class="glyph" style="margin-top:6px">✎</span>
+            <span class="line"></span>
+            <span class="line" style="width:38px"></span>
+          </div>
+          <div class="caption">boxed · static · dark</div>
+        </div>
+        <span class="pinned" style="left:52%;top:34%">1</span>
+        <span class="pinned" style="left:20%;top:58%">2</span>
+        <span class="pinned" style="left:74%;top:74%">3</span>
+        <ul class="fixlist" style="margin-top:20px">
+          <li><span class="num">1</span><span><b>Boxed and structured</b> — every element locked inside hard frames.</span></li>
+          <li><span class="num">2</span><span><b>Dark, strong colours</b> — a heavy voice for a young audience.</span></li>
+          <li><span class="num">3</span><span><b>Static and stiff</b> — no sense of reaching, moving, aiming higher.</span></li>
+        </ul>
+      </div>
+      <div class="side">
+        <span class="panel-label label">After · the published identity</span>
+        <img class="afterimg" src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-Rebranding-NewLogo-8.png" alt="Ugam new identity — kite, pencil, sun and sky" loading="lazy">
+        <div style="display:flex;gap:12px;margin-top:14px;flex-wrap:wrap">
+          <img class="afterimg" style="flex:1;min-width:150px" src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-Rebranding-EnglishFont-8.png" alt="English lockup" loading="lazy">
+          <img class="afterimg" style="flex:1;min-width:150px" src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-Rebranding-HindiFont-8.png" alt="Devanagari lockup" loading="lazy">
+        </div>
+        <ul class="fixlist">
+          <li><span class="num ok">1</span><span><b>The sky joined the mark</b> — brush strokes instead of boxes, so the identity breathes and feels aspirational.</span></li>
+          <li><span class="num ok">2</span><span><b>Lighter, hopeful palette</b> — strong when bold is needed, airy in print where content needs space.</span></li>
+          <li><span class="num ok">3</span><span><b>The kite and pencil rotated</b> — movement, aim and ascent; plus one lockup per script, English and Devanagari.</span></li>
+        </ul>
+        <div style="margin-top:16px"><span class="dtag">what changed · three motifs kept, the sky added</span></div>
+        <p class="note" style="margin-top:10px">The before frame above is a reconstruction — the studio published the new identity, not the old art. Fix numbering follows the brief&rsquo;s own description so problems and fixes stay matched.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 · their words ============ -->
+<section id="voice" style="background:var(--washed)">
+  <div class="wrap">
+    <span class="label">04 · Proof of outcome</span>
+    <h2>Their words, their voice</h2>
+    <div class="tst" style="margin-top:22px">
+      <p class="quote">&ldquo;This was one of the most interesting, and challenging, projects we have worked on — a brand that had to speak to a school girl in rural Jharkhand and a donor in Mumbai at the same time.&rdquo;</p>
+      <p style="margin-top:14px;color:var(--soft);font-size:14.5px"><b>Maitreyi Doshi</b> · studio&rsquo;s note on the Ugam rebranding — maitridesigns.com</p>
+      <div class="slotnote"><b>Placeholder slot in the framework:</b> the final page carries the <b>client&rsquo;s</b> testimonial here — name, role, organisation — after it is requested and approved by UEF. The framework demo shows where it sits and what it carries; the studio&rsquo;s note above stands in only for the review.</div>
+    </div>
+    <div class="verify">
+      <span class="label dim" style="flex:0 0 auto">What we&rsquo;d verify next</span>
+      <span class="chip">Donor response after the 2020 report vs previous years</span>
+      <span class="chip">Enquiry volume from ugamedu.org</span>
+      <span class="chip">Recognition of the bilingual mark among KGBV students</span>
+    </div>
+    <p class="note" style="margin-top:10px">One short strip, always — we say plainly what was and wasn&rsquo;t measured. Buyers reward studios that show their working.</p>
+  </div>
+</section>
+
+<!-- ============ 06 · three stories ============ -->
+<section id="stories">
+  <div class="wrap">
+    <span class="label">05 · The stories</span>
+    <h2>Three people, three journeys, one identity</h2>
+    <p class="lede" style="margin-top:10px">The actual work, shown big. A short supporting line sits beneath each screen — the story is the artefact, not the paragraph.</p>
+
+    <article class="story">
+      <div class="sthead">
+        <span class="hat">For a potential sponsor · brochure + annual report · 2019</span>
+        <h3>&ldquo;A sponsor understands Ugam in one sitting&rdquo;</h3>
+      </div>
+      <div class="imgs">
+        <img class="afterimg" src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-Brochure-Cover.jpg" alt="Ugam brochure cover — full spread" loading="lazy">
+        <img class="afterimg" src="https://maitridesigns.com/wp-content/uploads/2021/06/02-MaitriDesigns-Ugam-AnnualReport-Page1.jpg" alt="Annual report opening page — full spread" loading="lazy">
+      </div>
+      <div class="support">
+        <p>The brief said <em>crisp, clean, minimalistic</em> — the content is compelling, so the design stays out of its way: colour used sparingly, space for the story to breathe. The brochure in the mail and the report on the donor&rsquo;s desk are the same voice.</p>
+        <div class="meta">
+          <span class="dtag">what changed · the entire story told in four pages</span>
+          <span class="outcome"><span class="num ok">→</span><span>The whole story · 4 pages</span></span>
+        </div>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="sthead">
+        <span class="hat">For a school girl in a KGBV · posters + magazine</span>
+        <h3>&ldquo;The brand looks like her, not like an institution&rdquo;</h3>
+      </div>
+      <div class="imgs">
+        <img class="afterimg" src="https://maitridesigns.com/wp-content/uploads/2021/06/03-MaitriDesigns-Ugam-GirlsPosters.jpg" alt="Girls empowerment posters — full campaign artwork" loading="lazy">
+        <img class="afterimg" src="https://maitridesigns.com/wp-content/uploads/2021/06/05-MaitriDesigns-Ugam-Urja.jpg" alt="Urja girls magazine cover — full artwork" loading="lazy">
+      </div>
+      <div class="support">
+        <p>Inside the schools the kite-and-sky language meets its hardest test — the empowerment posters, the menstrual hygiene campaign and <em>Urja</em>, the girls&rsquo; magazine, all speaking the same warm voice.</p>
+        <div class="meta">
+          <span class="dtag">what changed · one warm language across campaigns</span>
+          <span class="outcome"><span class="num ok">→</span><span>1 identity running 3 print campaigns + a magazine</span></span>
+        </div>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="sthead">
+        <span class="hat">For a stakeholder landing on the site · web design · 2020</span>
+        <h3>&ldquo;Findable, recognisable, live&rdquo;</h3>
+      </div>
+      <div class="imgs single">
+        <img class="afterimg" src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-WebsiteDesign.jpg" alt="Ugam website design — full-width view" loading="lazy">
+      </div>
+      <div class="support">
+        <p>A stakeholder types <em>ugamedu.org</em> and meets the same identity they met on paper — designed and developed as one system, brand to browser.</p>
+        <div class="meta">
+          <span class="dtag">what changed · brand built and shipped to the web in one system</span>
+          <span class="outcome"><span class="num ok">→</span><span>Identity + website, live · 2020</span></span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 07 · the system (user's new point 7) ============ -->
+<section id="system" style="background:var(--washed)">
+  <div class="wrap">
+    <span class="label">06 · The system we left behind</span>
+    <h2>Styles, iconography, colour — everything a future asset needs</h2>
+    <p class="lede" style="margin-top:10px">A brand is more than a logo. Every element below is a published, reusable rule — this is what keeps the next brochure, poster or web page from drifting from the identity.</p>
+
+    <div class="sys">
+      <div class="syscard"><div class="imgbox"><img src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-Rebranding-Logo-8.png" alt="Logo construction" loading="lazy"></div><div class="cap"><b>The mark</b><span>Sun, kite, pencil — and the sky that opened the box.</span></div></div>
+      <div class="syscard"><div class="imgbox"><img src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-Rebranding-LogoBlackWhite-8.png" alt="Black and white lockup" loading="lazy"></div><div class="cap"><b>Monochrome use</b><span>One colour forms, stamp-safe, fax-safe — the identity survives anywhere.</span></div></div>
+      <div class="syscard"><div class="imgbox"><img src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-Rebranding-PalletFont-8.png" alt="Colour palette" loading="lazy"></div><div class="cap"><b>Colour palette</b><span>Strong when bold, sparing in print — space for content to breathe is a rule, not an accident.</span></div></div>
+      <div class="syscard"><div class="imgbox"><img src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-Rebranding-EnglishFont-2-8.png" alt="English typeface" loading="lazy"></div><div class="cap"><b>Typography · English</b><span>The Latin script voice of the brand.</span></div></div>
+      <div class="syscard"><div class="imgbox"><img src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-Rebranding-HindiFont-8.png" alt="Devanagari typeface" loading="lazy"></div><div class="cap"><b>Typography · Devanagari</b><span>The Hindi script voice — equal weight, equal standing.</span></div></div>
+      <div class="syscard"><div class="imgbox"><img src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-Rebranding-VisualLanguage-8.png" alt="Visual language" loading="lazy"></div><div class="cap"><b>Iconography &amp; motifs</b><span>Sky strokes and ascent — the visual grammar the campaigns borrow.</span></div></div>
+      <div class="syscard"><div class="imgbox"><img src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-Rebranding-Photos-8.png" alt="Photography guidelines" loading="lazy"></div><div class="cap"><b>Photography</b><span>How the girls are seen: with dignity, at eye level, in their own light.</span></div></div>
+      <div class="syscard"><div class="imgbox"><img src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-Branding-BizCards.jpg" alt="Business cards" loading="lazy"></div><div class="cap"><b>Applications</b><span>The rules in daily use — stationery carries the system forward.</span></div></div>
+      <div class="syscard" style="justify-content:center"><div class="imgbox" style="flex:1"><img src="https://maitridesigns.com/wp-content/uploads/2021/06/MaitriDesigns-Ugam-Rebranding-Logo-8.png" alt="Rebranding cover" loading="lazy"></div><div class="cap"><b>The full published record</b><span>Source of every image on this page: maitridesigns.com/work › Ugam.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 · how AI helped ============ -->
+<section id="ai">
+  <div class="wrap">
+    <span class="label">07 · How AI helped · Echo &amp; Labs</span>
+    <h2>Two assistants inside the studio — and where they were used on Ugam</h2>
+    <p class="lede" style="margin-top:10px">We say plainly where our tools sat in this project. Neither designs for the client — both make the studio&rsquo;s stages faster and every claim checkable. Ugam ran 2019–20; Echo and Labs are how the studio runs the same sequence today, with each step logged.</p>
+
+    <div class="ai">
+      <div class="tool">
+        <span class="stage">Stages 1–2 · Interrogate → Evidence</span>
+        <h3>Echo</h3>
+        <p class="line">Retrieval and evidence logging — research and synthesis in days instead of weeks, every claim carrying a source.</p>
+        <p class="use"><b>Where it worked on Ugam:</b> the brief&rsquo;s core tension — speak to rural KGBV school girls and metro donors at once — is exactly the conflict Echo surfaces in stakeholder language: it mines briefs, interviews and past material, logs what each side said, and hands the studio two tested position statements before a single pixel moves.</p>
+      </div>
+      <div class="tool">
+        <span class="stage">Stage 3 · Prototype</span>
+        <h3>Labs</h3>
+        <p class="line">Generates and tests interface and identity variants against the criteria named in stage 2 — debates become tested decisions.</p>
+        <p class="use"><b>Where it worked on Ugam:</b> briefs like &ldquo;rotated kite vs static mark, aspirational vs institutional&rdquo; become Labs variants scored against the two-audience criteria — colour weight tested against photo rules, lockups screened in English and Devanagari before the studio took the mark live.</p>
+      </div>
+    </div>
+    <div class="logrow">
+      <span class="chip dark">echo · evidenced, logged</span>
+      <span class="chip dark">labs · variant-tested, logged</span>
+      <span class="chip">What&rsquo;s never outsourced: the taste, the judgement, the call — the studio&rsquo;s.</span>
+    </div>
+    <p class="note" style="margin-top:12px">Transparency rule: any page on this site that used AI shows a log like this one. Credibility through disclosure, not silence.</p>
+  </div>
+</section>
+
+<!-- ============ 09 · wrap ============ -->
+<footer>
+  <div class="wrap">
+    <span class="label">The ask</span>
+    <h2 style="margin-top:6px">Your identity is doing more work than you think.</h2>
+    <p class="lede" style="margin-top:8px">If Ugam&rsquo;s box sounds like your box, that comparison page you just read is how we start.</p>
+    <div style="margin-top:22px">
+      <a class="cta" href="mailto:maitreyi@maitridesigns.com">Start a project →</a>
+    </div>
+    <div class="nextrow">
+      <span>Narrative sequence: problem → outcome → before/after → voice → stories → system → AI → ask.</span>
+      <span>Content &amp; images: maitridesigns.com · Placeholder-marked blocks need signed content before go-live.</span>
+    </div>
+  </div>
+</footer>
+
+</main>
+</body>
+</html>
